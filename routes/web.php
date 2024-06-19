@@ -6,6 +6,4 @@ Route::get('/', function () {
     return 'aaa';
 });
 
-Route::get('/my-page', function () {
-    return 'this is my page';
-});
+Route::get('/my-page', 'App\Http\Controllers\MyPlaceController@index');
