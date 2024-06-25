@@ -6,4 +6,5 @@ Route::get('/', function () {
     return 'aaa';
 });
 
-Route::get('/my-page', 'App\Http\Controllers\MyPlaceController@index');
+Route::get('/posts', 'App\Http\Controllers\PostController@index');
+Route::get('/pets', 'App\Http\Controllers\PetController@index');
