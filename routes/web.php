@@ -7,4 +7,4 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', 'App\Http\Controllers\PostController@index');
-Route::get('/pets', 'App\Http\Controllers\PetController@index');
+Route::get('/posts/create', 'App\Http\Controllers\PostController@create');
