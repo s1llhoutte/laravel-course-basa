@@ -40,7 +40,8 @@ class PostController extends Controller
         dd('created');
     }
 
-    public function update() {
+    public function update()
+    {
         $post = Post::find(6);
 
         $post->update([
@@ -54,7 +55,8 @@ class PostController extends Controller
         dd('updated');
     }
 
-    public function delete() {
+    public function delete()
+    {
         $post = Post::find(2);
         $post->delete();
         dd('deleted');
@@ -63,5 +65,54 @@ class PostController extends Controller
 //        $post = Post::withTrashed()->find(2);
 //        $post->restore();
 //        dd('restored');
+    }
+
+    public function firstOrCreate()
+    {
+        $anotherPost = [
+            'title' => 'some post',
+            'content' => 'some content',
+            'image' => 'some-image.jpg',
+            'likes' => 40,
+            'is_published' => 1,
+        ];
+
+        $post = Post::firstOrCreate([
+            'title' => 'some title phpStorm'
+        ], [
+            'title' => 'some title phpStorm',
+            'content' => 'some content',
+            'image' => 'some-image.jpg',
+            'likes' => 40,
+            'is_published' => 1,
+        ]);
+        dump($post->content);
+        dd('finished');
+    }
+
+    public function updateOrCreate()
+    {
+        $anotherPost = [
+            'title' => 'updateorcreate some post',
+            'content' => 'updateorcreate some content',
+            'image' => 'updateorcreate some-image.jpg',
+            'likes' => 4000,
+            'is_published' => 0,
+        ];
+
+        $post = Post::updateOrCreate(
+            [
+                'title' => 'some title not phpStorm',
+            ],
+            [
+                'title' => 'some not phpStorm',
+                'content' => 'it\'s not updated some content',
+                'image' => 'it\'s not updated some-image.jpg',
+                'likes' => 4000,
+                'is_published' => 0,
+            ]
+        );
+
+        dump($post->content);
     }
 }
