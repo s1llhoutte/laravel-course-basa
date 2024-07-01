@@ -17,7 +17,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ route('main.index') }}">Home</a>
+                                <a class="nav-link" href="{{ route('main.index') }}">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
