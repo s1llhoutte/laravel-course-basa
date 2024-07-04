@@ -9,7 +9,7 @@ use App\Models\PostTag;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class DestroyController extends Controller
+class DestroyController extends BaseController
 {
     public function __invoke(Post $post)
     {

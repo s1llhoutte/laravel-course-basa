@@ -9,7 +9,7 @@ use App\Models\PostTag;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function __invoke()
     {
