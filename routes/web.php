@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Post\IndexController;
 
-Route::get('/', 'App\Http\Controllers\HomeController@index');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('start');
 
 Route::group(['namespace'=>'App\Http\Controllers\Post'], function(){
     Route::get('/posts', 'IndexController' )->name('post.index');
@@ -15,9 +16,9 @@ Route::group(['namespace'=>'App\Http\Controllers\Post'], function(){
     Route::delete('/posts/{post}', 'DestroyController')->name('post.delete');
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => ['admin']], function () {
     Route::group(['namespace' => 'Post'], function () {
-        Route::get('/post', 'IndexController')->name('admin.post.index');
+        Route::get('/post', [IndexController::class, '__invoke'])->name('admin.post.index');
     });
 });
 
