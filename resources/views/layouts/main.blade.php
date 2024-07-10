@@ -28,6 +28,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('contact.index') }}">Contacts</a>
                             </li>
+                            @if (auth()->check() && auth()->user()->role === 'admin')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('admin.post.index') }}">Admin</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
