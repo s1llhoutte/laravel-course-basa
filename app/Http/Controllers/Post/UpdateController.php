@@ -18,7 +18,8 @@ class UpdateController extends BaseController
         $data = $request->validated();
         $post = $this->service->update($post, $data);
 
-        return new PostResources($post);
+        return $post instanceof Post ? new PostResources($post) : $post;
+
 //        return redirect()->route('post.show', $post->id);
     }
 }
